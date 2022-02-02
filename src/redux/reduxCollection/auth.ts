@@ -14,9 +14,12 @@ type LogoutAction = {
   type: AuthActionTypes.LOGOUT;
 };
 
-export const logout: ActionCreator<LogoutAction> = () => ({
+export const logout: ActionCreator<LogoutAction> = () => {
+  localStorage.removeItem('token');
+  localStorage.removeItem('userId');
+  return ({
   type: AuthActionTypes.LOGOUT,
-});
+})};
 
 type LoginAction = {
   type: AuthActionTypes.LOGIN;
